@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><title>Entrega — Fluig 2 e Analytics 2</title>
+<style>body{font:11pt Arial,sans-serif;color:#26343b;max-width:850px;margin:36px auto;line-height:1.48}h1,h2{color:#086f68}h1{font-size:24pt}h2{font-size:15pt;margin-top:26px}table{border-collapse:collapse;width:100%;margin:12px 0}td,th{border:1px solid #cbd6db;padding:7px;text-align:left}th{background:#edf4f3}.note{background:#fff4d6;padding:12px;border-left:4px solid #d49a16}.small{font-size:9pt;color:#63727b}</style></head>
+<body>
+<h1>Entrega local — Fluig 2 e Analytics 2</h1>
+<p>Pacote de fontes e referências para concluir os dois desafios no ambiente de treinamento TOTVS.</p>
+<div class="note"><b>Estado de publicação:</b> os arquivos locais estão preparados, mas não foram publicados no Fluig/GoodData porque este workspace não tem conexão com a instância de treinamento. Os prints reais de publicação, LDM, graphs e dashboard precisam ser capturados no ambiente.</div>
+
+<h2>Fluig — formulário da solicitação</h2>
+<p>O formulário está em <code>fluig/forms</code>: seções do chamado, pesquisa de laboratório, campo oculto do código, tabela pai-filho de equipamentos, campos de triagem, autorização, execução, ajuste e comentários. O CSS usa o Style Guide e adapta o layout para telas estreitas. O JavaScript inclui máscara SLG-00000, inclusão/remoção de linha, callback da pesquisa e configuração por estado.</p>
+<p>Como o processo da Atividade 1 não foi feito ainda, <code>fluig/workflow/blueprint.md</code> define raias, tarefas, gateways, grupos e fins para montá-lo no Studio. Após criar as atividades, preencher os IDs em <code>FLUIG_STAGE_BY_STATE</code> e configurar o dataset de laboratório real.</p>
+
+<h2>Analytics — carga e modelo</h2>
+<p>O modelo proposto usa <code>ContasAReceber</code> como fato e dimensões Cliente, Filial, Coligada, Espécie do documento e Centro de custo. A dimensão Filial também fornece Unidade de negócio. O mapa das chaves, papéis de data e metadados de carga está em <code>analytics/ldm.json</code>.</p>
+<table><thead><tr><th>CSV</th><th>Linhas de origem</th></tr></thead><tbody>
+<tr><td>ContasAReceber</td><td>5.789</td></tr><tr><td>Cliente</td><td>60</td></tr><tr><td>Filial</td><td>4</td></tr><tr><td>Coligada</td><td>2</td></tr><tr><td>Especie_Documento</td><td>4</td></tr><tr><td>Centro_Custo</td><td>8</td></tr></tbody></table>
+<p>Situações distintas: <b>BAIXADO</b>, <b>EM ABERTO</b> e <b>CANCELADO</b>. As regras de indicadores e comparativos estão descritas em <code>analytics/README.md</code> e os padrões de expressão em <code>analytics/metricas.maql</code>. As expressões devem ser ligadas aos identificadores gerados no workspace pelo editor GoodData.</p>
+
+<h2>Referências de validação</h2>
+<table><thead><tr><th>Conferência</th><th>Resultado no CSV</th></tr></thead><tbody>
+<tr><td>Recebido em setembro/2026 por vencimento</td><td>114 títulos · R$ 1.065.128,35</td></tr>
+<tr><td>Recebido em setembro/2026 por baixa</td><td>141 títulos · R$ 1.351.255,51</td></tr>
+<tr><td>Saldo em aberto vencido em 02/10/2026</td><td>183 títulos · R$ 1.659.211,06</td></tr>
+<tr><td>Saldo em aberto vencendo a partir de 02/10/2026</td><td>338 títulos · R$ 2.720.900,40</td></tr></tbody></table>
+<p>Para validar o gráfico e o filtro de vencimento, comparar com o recorte por vencimento. Para métrica de recebimento reconhecida pela data de baixa, usar a linha por baixa. Anotar o papel da data usado na tabela dinâmica.</p>
+
+<h2>Teste e evidência pendentes no ambiente</h2>
+<ul><li>Publicar o processo e testar os caminhos de atendimento, devolução e cancelamento.</li><li>Publicar o formulário e testar a seleção do zoom, código oculto, três linhas pai-filho, remoção da linha intermediária, salvamento/retorno e viewport de 390 px.</li><li>Executar os graphs e confirmar as contagens carregadas.</li><li>Montar dashboard, testar os cinco filtros e capturar evidências reais para anexar à entrega.</li></ul>
+<p class="small">A validação local foi calculada por <code>validacao/validar_csv.py</code>. As referências não substituem a conferência após a carga no GoodData.</p>
+</body></html>

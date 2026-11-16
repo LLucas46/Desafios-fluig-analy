@@ -1,0 +1,46 @@
+{
+  "workspace": "02. Financeiro / Painel de Indicadores",
+  "source_encoding": "UTF-8",
+  "csv": {"delimiter": ",", "quote": "\"", "header": true, "date_pattern": "yyyyMMdd", "decimal_locale": "en.US"},
+  "datasets": [
+    {
+      "name": "Cliente", "file": "../../../../Dados/RM_Backoffice_ficticio/Cliente.csv", "grain": "um cliente por linha", "primary_key": "PK_CLIENTE",
+      "columns": {"PK_CLIENTE":"attribute:string:key", "COD_CLIENTE":"attribute:string", "NOME_CLIENTE":"attribute:string", "RAMO_ATIV":"attribute:string", "INSTANCIA":"attribute:string"}
+    },
+    {
+      "name": "Filial", "file": "../../../../Dados/RM_Backoffice_ficticio/Filial.csv", "grain": "uma filial por linha", "primary_key": "PK_FILIAL",
+      "columns": {"PK_FILIAL":"attribute:string:key", "COD_FILIAL":"attribute:string", "DESC_FILIAL":"attribute:string", "COD_UNINEG":"attribute:string", "UNI_NEG":"attribute:string", "INSTANCIA":"attribute:string"}
+    },
+    {
+      "name": "Coligada", "file": "../../../../Dados/RM_Backoffice_ficticio/Coligada.csv", "grain": "uma coligada por linha", "primary_key": "PK_COLIGADA",
+      "columns": {"PK_COLIGADA":"attribute:string:key", "CODIGO_COLIGADA":"attribute:string", "DESCRICAO_COLIGADA":"attribute:string", "INSTANCIA":"attribute:string"}
+    },
+    {
+      "name": "Especie_Documento", "file": "../../../../Dados/RM_Backoffice_ficticio/Especie_Documento.csv", "grain": "uma espécie por linha", "primary_key": "PK_ESPECIE_DOCUMENTO",
+      "columns": {"PK_ESPECIE_DOCUMENTO":"attribute:string:key", "COD_ESPECIE_DOCUMENTO":"attribute:string", "DESC_ESPECIE_DOCUMENTO":"attribute:string", "INSTANCIA":"attribute:string"}
+    },
+    {
+      "name": "Centro_Custo", "file": "../../../../Dados/RM_Backoffice_ficticio/Centro_Custo.csv", "grain": "um centro de custo por linha", "primary_key": "PK_CENTRO_CUSTO",
+      "columns": {"PK_CENTRO_CUSTO":"attribute:string:key", "CODCCUSTO":"attribute:string", "DESCRICAO":"attribute:string", "INSTANCIA":"attribute:string"}
+    },
+    {
+      "name": "ContasAReceber", "file": "../../../../Dados/RM_Backoffice_ficticio/ContasAReceber.csv", "grain": "um título por linha", "primary_key": "PK_TITULO",
+      "columns": {
+        "PK_TITULO":"attribute:string:key", "PK_COLIGADA":"reference:string", "PK_FILIAL":"reference:string", "PK_CLIENTE":"reference:string", "PK_ESPECIE_DOCUMENTO":"reference:string", "PK_CENTRO_CUSTO":"reference:string",
+        "DATA_EXTRACAO":"attribute:date", "DATA_EMISSAO":"date_role:Data de emissão", "DATA_VENCIMENTO":"date_role:Data de vencimento", "DATA_BAIXA":"date_role:Data de baixa",
+        "VALOR_VENCIMENTO":"fact:decimal(15,2)", "VALOR_RECEBIDO":"fact:decimal(15,2)", "SALDO_A_RECEBER":"fact:decimal(15,2)", "VALOR_DESCONTO":"fact:decimal(15,2)", "VALOR_JUROS":"fact:decimal(15,2)", "DIAS_ATRASO":"fact:integer",
+        "NUMERO_DOCUMENTO":"attribute:string", "SITUACAO_DO_TITULO":"attribute:string", "PARCELA":"attribute:string", "INSTANCIA":"attribute:string"
+      },
+      "relationships": [
+        {"foreign_key":"PK_COLIGADA","dataset":"Coligada","primary_key":"PK_COLIGADA"},
+        {"foreign_key":"PK_FILIAL","dataset":"Filial","primary_key":"PK_FILIAL"},
+        {"foreign_key":"PK_CLIENTE","dataset":"Cliente","primary_key":"PK_CLIENTE"},
+        {"foreign_key":"PK_ESPECIE_DOCUMENTO","dataset":"Especie_Documento","primary_key":"PK_ESPECIE_DOCUMENTO"},
+        {"foreign_key":"PK_CENTRO_CUSTO","dataset":"Centro_Custo","primary_key":"PK_CENTRO_CUSTO"}
+      ]
+    }
+  ],
+  "load_order": ["Cliente", "Filial", "Coligada", "Especie_Documento", "Centro_Custo", "ContasAReceber"],
+  "expected_rows": {"Cliente":60,"Filial":4,"Coligada":2,"Especie_Documento":4,"Centro_Custo":8,"ContasAReceber":5789},
+  "notes": ["Chaves PK devem permanecer string para preservar códigos compostos como 1_3.", "DATA_BAIXA tem valores vazios; configurar campo/relacionamento de data para aceitar nulos.", "A referência temporal do recebimento e do dashboard deve ser Data de vencimento."]
+}

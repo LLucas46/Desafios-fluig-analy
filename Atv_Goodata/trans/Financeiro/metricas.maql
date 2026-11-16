@@ -1,0 +1,60 @@
+# CATÁLOGO CONCEITUAL — substitua cada identificador pelo elemento inserido
+# no editor GoodData. Este arquivo não é um export de métricas publicadas.
+# Pasta: 02. Financeiro - Painel de Recebimentos
+# Data fixa de referência para atraso: 2026-10-02.
+
+# $ Recebimento total
+SELECT SUM([VALOR_VENCIMENTO]) WHERE [SITUACAO_DO_TITULO] <> "CANCELADO"
+
+# $ Recebido
+SELECT SUM([VALOR_RECEBIDO]) WHERE [SITUACAO_DO_TITULO] = "BAIXADO"
+
+# $ A receber (s/ atraso)
+SELECT SUM([SALDO_A_RECEBER]) WHERE [SITUACAO_DO_TITULO] = "EM ABERTO" AND [DATA_VENCIMENTO] >= 2026-10-02
+
+# $ A receber (c/ atraso)
+SELECT SUM([SALDO_A_RECEBER]) WHERE [SITUACAO_DO_TITULO] = "EM ABERTO" AND [DATA_VENCIMENTO] < 2026-10-02
+
+# COMPARATIVOS — para cada uma das três bases: $ Recebimento total,
+# $ Recebido e $ A receber (c/ atraso), criar as quatro métricas abaixo.
+# Escolha no editor o atributo temporal Data de vencimento com granularidade
+# Month para o comparativo mensal e Year para o anual. Confirmar a forma exata
+# de FOR PREVIOUS gerada pelo editor após publicar o LDM.
+
+# <base> do mês anterior
+SELECT <base> FOR PREVIOUS ( [Data de vencimento - Month] )
+
+# <base> do mês anterior [% Var]
+( <base> - <base> do mês anterior ) / (<base> do mês anterior)
+
+# <base> do ano anterior
+SELECT <base> FOR PREVIOUS ( [Data de vencimento - Year] )
+
+# <base> do ano anterior [% Var]
+( <base> - <base> do ano anterior ) / (<base> do ano anterior)
+
+# Nomes completos das 12 métricas comparativas:
+# $ Recebimento total do mês anterior
+# $ Recebimento total do mês anterior [% Var]
+# $ Recebimento total do ano anterior
+# $ Recebimento total do ano anterior [% Var]
+# $ Recebido do mês anterior
+# $ Recebido do mês anterior [% Var]
+# $ Recebido do ano anterior
+# $ Recebido do ano anterior [% Var]
+# $ A receber (c/ atraso) do mês anterior
+# $ A receber (c/ atraso) do mês anterior [% Var]
+# $ A receber (c/ atraso) do ano anterior
+# $ A receber (c/ atraso) do ano anterior [% Var]
+# A variação deve retornar nulo se o período anterior for zero/vazio; exibir --.
+
+# Formato personalizado para todas as seis variações, conforme enunciado:
+# [=null]--;
+# [>0,05][color=198762]▲#,##0.00%;
+# [>0][color=F0CA38]▲#.##0,00%;
+# [=0][color=F0CA38]◄#.##0,00%;
+# [>=-0,05][color=F0CA38]▼#,##0.00%;
+# [<-0,05][color=D3362C]▼#,##0.00%;
+
+# Formato de moeda: prefixo $, duas casas decimais.
+# Fotografia sem atraso não recebe métricas comparativas; mostrar -- no cartão.

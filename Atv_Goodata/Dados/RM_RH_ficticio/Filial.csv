@@ -1,0 +1,4 @@
+"INSTANCIA","FKCODCOLIGADA","PKCODFILIAL","CODIGODAFILIAL","NOMEFANTASIAFILIAL","ESTADO","CIDADE"
+"01","1","1_1","1","Matriz","SP","Campinas"
+"01","1","1_2","2","Filial Norte","PA","Belem"
+"01","1","1_3","3","Filial Sul","RS","Porto Alegre"

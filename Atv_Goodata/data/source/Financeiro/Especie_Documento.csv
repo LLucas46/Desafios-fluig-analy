@@ -1,0 +1,5 @@
+"PK_ESPECIE_DOCUMENTO","COD_ESPECIE_DOCUMENTO","DESC_ESPECIE_DOCUMENTO","INSTANCIA"
+"1","NF","Nota fiscal","01"
+"2","DP","Duplicata","01"
+"3","BL","Boleto","01"
+"4","FT","Fatura","01"

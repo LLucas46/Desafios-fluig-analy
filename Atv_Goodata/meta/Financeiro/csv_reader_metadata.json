@@ -1,0 +1,228 @@
+{
+  "description": "Especificação local dos leitores CSV para configurar no CloudConnect; não é um export/import nativo de metadados.",
+  "reader": {
+    "delimiter": ",",
+    "quote": "\"",
+    "skipHeader": 1,
+    "datePattern": "yyyyMMdd",
+    "decimal": {
+      "length": 15,
+      "scale": 2,
+      "locale": "en.US"
+    },
+    "keysAsString": true,
+    "emptyDateAllowed": [
+      "DATA_BAIXA"
+    ]
+  },
+  "datasets": {
+    "Centro_Custo": {
+      "file": "data/source/Financeiro/Centro_Custo.csv",
+      "rows": 8,
+      "columns": [
+        {
+          "name": "PK_CENTRO_CUSTO",
+          "type": "string"
+        },
+        {
+          "name": "CODCCUSTO",
+          "type": "string"
+        },
+        {
+          "name": "DESCRICAO",
+          "type": "string"
+        },
+        {
+          "name": "INSTANCIA",
+          "type": "string"
+        }
+      ]
+    },
+    "Cliente": {
+      "file": "data/source/Financeiro/Cliente.csv",
+      "rows": 60,
+      "columns": [
+        {
+          "name": "PK_CLIENTE",
+          "type": "string"
+        },
+        {
+          "name": "COD_CLIENTE",
+          "type": "string"
+        },
+        {
+          "name": "NOME_CLIENTE",
+          "type": "string"
+        },
+        {
+          "name": "RAMO_ATIV",
+          "type": "string"
+        },
+        {
+          "name": "INSTANCIA",
+          "type": "string"
+        }
+      ]
+    },
+    "Coligada": {
+      "file": "data/source/Financeiro/Coligada.csv",
+      "rows": 2,
+      "columns": [
+        {
+          "name": "PK_COLIGADA",
+          "type": "string"
+        },
+        {
+          "name": "CODIGO_COLIGADA",
+          "type": "string"
+        },
+        {
+          "name": "DESCRICAO_COLIGADA",
+          "type": "string"
+        },
+        {
+          "name": "INSTANCIA",
+          "type": "string"
+        }
+      ]
+    },
+    "ContasAReceber": {
+      "file": "data/source/Financeiro/ContasAReceber.csv",
+      "rows": 5789,
+      "columns": [
+        {
+          "name": "PK_COLIGADA",
+          "type": "string"
+        },
+        {
+          "name": "PK_FILIAL",
+          "type": "string"
+        },
+        {
+          "name": "PK_CLIENTE",
+          "type": "string"
+        },
+        {
+          "name": "PK_ESPECIE_DOCUMENTO",
+          "type": "string"
+        },
+        {
+          "name": "PK_TITULO",
+          "type": "string"
+        },
+        {
+          "name": "PK_CENTRO_CUSTO",
+          "type": "string"
+        },
+        {
+          "name": "DATA_EXTRACAO",
+          "type": "date"
+        },
+        {
+          "name": "DATA_EMISSAO",
+          "type": "date"
+        },
+        {
+          "name": "DATA_BAIXA",
+          "type": "date"
+        },
+        {
+          "name": "DATA_VENCIMENTO",
+          "type": "date"
+        },
+        {
+          "name": "VALOR_VENCIMENTO",
+          "type": "decimal(15,2)"
+        },
+        {
+          "name": "VALOR_RECEBIDO",
+          "type": "decimal(15,2)"
+        },
+        {
+          "name": "SALDO_A_RECEBER",
+          "type": "decimal(15,2)"
+        },
+        {
+          "name": "VALOR_DESCONTO",
+          "type": "decimal(15,2)"
+        },
+        {
+          "name": "VALOR_JUROS",
+          "type": "decimal(15,2)"
+        },
+        {
+          "name": "DIAS_ATRASO",
+          "type": "integer"
+        },
+        {
+          "name": "NUMERO_DOCUMENTO",
+          "type": "string"
+        },
+        {
+          "name": "SITUACAO_DO_TITULO",
+          "type": "string"
+        },
+        {
+          "name": "PARCELA",
+          "type": "string"
+        },
+        {
+          "name": "INSTANCIA",
+          "type": "string"
+        }
+      ]
+    },
+    "Especie_Documento": {
+      "file": "data/source/Financeiro/Especie_Documento.csv",
+      "rows": 4,
+      "columns": [
+        {
+          "name": "PK_ESPECIE_DOCUMENTO",
+          "type": "string"
+        },
+        {
+          "name": "COD_ESPECIE_DOCUMENTO",
+          "type": "string"
+        },
+        {
+          "name": "DESC_ESPECIE_DOCUMENTO",
+          "type": "string"
+        },
+        {
+          "name": "INSTANCIA",
+          "type": "string"
+        }
+      ]
+    },
+    "Filial": {
+      "file": "data/source/Financeiro/Filial.csv",
+      "rows": 4,
+      "columns": [
+        {
+          "name": "PK_FILIAL",
+          "type": "string"
+        },
+        {
+          "name": "COD_FILIAL",
+          "type": "string"
+        },
+        {
+          "name": "DESC_FILIAL",
+          "type": "string"
+        },
+        {
+          "name": "COD_UNINEG",
+          "type": "string"
+        },
+        {
+          "name": "UNI_NEG",
+          "type": "string"
+        },
+        {
+          "name": "INSTANCIA",
+          "type": "string"
+        }
+      ]
+    }
+  }
+}

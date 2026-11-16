@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Graph author="llucas" created="Sun Nov 15 18:55:38 BRST 2026" guiVersion="3.4.4.P" id="1794867790382" licenseType="Commercial" modified="Sun Nov 15 20:23:50 BRST 2026" modifiedBy="llucas" name="_Main" revision="1.1" showComponentDetails="true">
+  <Global>
+    <Property fileURL="workspace.prm" id="GraphParameter0" />
+    <Note alignment="1" backgroundColorB="225" backgroundColorG="255" backgroundColorR="255" enabled="true" folded="false" height="323" id="Note0" textColorB="0" textColorG="0" textColorR="0" textFontSize="8" title="Dimensão" titleColorB="0" titleColorG="0" titleColorR="0" titleFontSize="10" width="603" x="204" y="69" />
+    <Note alignment="1" backgroundColorB="225" backgroundColorG="255" backgroundColorR="255" enabled="true" folded="false" height="179" id="Note1" textColorB="0" textColorG="0" textColorR="0" textFontSize="8" title="Fato" titleColorB="0" titleColorG="0" titleColorR="0" titleFontSize="10" width="445" x="272" y="415" />
+    <Dictionary />
+  </Global>
+  <Phase number="0">
+    <Node enabled="enabled" graphName="${GRAPH_DIR}/Cliente.grf" guiName="Exe_Cliente" guiX="150" guiY="180" id="EXE_CLIENTE" type="RUN_GRAPH" />
+  </Phase>
+  <Phase number="1">
+    <Node enabled="enabled" graphName="${GRAPH_DIR}/Filial.grf" guiName="Exe_Filial" guiX="240" guiY="218" id="EXE_FILIAL" type="RUN_GRAPH" />
+  </Phase>
+  <Phase number="2">
+    <Node enabled="enabled" graphName="${GRAPH_DIR}/Coligada.grf" guiName="Exe_Coligada" guiX="330" guiY="256" id="EXE_COLIGADA" type="RUN_GRAPH" />
+  </Phase>
+  <Phase number="3">
+    <Node enabled="enabled" graphName="${GRAPH_DIR}/Especie_Documento.grf" guiName="Exe_Especie_Documento" guiX="420" guiY="294" id="EXE_ESPECIE_DOCUMENTO" type="RUN_GRAPH" />
+  </Phase>
+  <Phase number="4">
+    <Node enabled="enabled" graphName="${GRAPH_DIR}/Centro_Custo.grf" guiName="Exe_Centro_Custo" guiX="510" guiY="332" id="EXE_CENTRO_CUSTO" type="RUN_GRAPH" />
+  </Phase>
+  <Phase number="5">
+    <Node enabled="enabled" graphName="${GRAPH_DIR}/ContasAReceber.grf" guiName="Exe_ContasAReceber" guiX="600" guiY="370" id="EXE_CONTASARECEBER" type="RUN_GRAPH" />
+  </Phase>
+</Graph>

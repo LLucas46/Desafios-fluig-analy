@@ -1,0 +1,5 @@
+"PK_FILIAL","COD_FILIAL","DESC_FILIAL","COD_UNINEG","UNI_NEG","INSTANCIA"
+"1_1","1","Matriz","01","Industria","01"
+"1_2","2","Filial Norte","02","Comercio","01"
+"1_3","3","Filial Sul","03","Servicos","01"
+"2_1","1","Filial Coligada 2","01","Industria","01"
